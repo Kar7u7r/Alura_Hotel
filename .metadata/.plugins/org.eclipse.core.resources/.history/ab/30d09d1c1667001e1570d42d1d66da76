@@ -1,7 +1,0 @@
-package DAOS;
-
-public class RegistroHuespedesDAO {
-	public void guardarHuespedes() {
-		
-	}
-}

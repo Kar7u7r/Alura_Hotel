@@ -1,9 +1,0 @@
-package model;
-
-public class category {
-
-	public category(int int1, String string) {
-		// TODO Auto-generated constructor stub
-	}
-
-}

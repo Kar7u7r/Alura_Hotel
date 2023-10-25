@@ -70,9 +70,10 @@
                     <tags>categoryTag:General</tags>
                   </children>
                 </children>
-                <children xsi:type="basic:PartSashContainer" xmi:id="_UOOBzmsQEe6FvdZsqWmiww" containerData="5000" selectedElement="_UOOB0msQEe6FvdZsqWmiww" horizontal="true">
+                <children xsi:type="basic:PartSashContainer" xmi:id="_UOOBzmsQEe6FvdZsqWmiww" containerData="5000" selectedElement="_UOOBz2sQEe6FvdZsqWmiww" horizontal="true">
                   <children xsi:type="basic:PartStack" xmi:id="_UOOBz2sQEe6FvdZsqWmiww" elementId="topLeft" containerData="2479" selectedElement="_UOOB0GsQEe6FvdZsqWmiww">
                     <tags>org.eclipse.e4.primaryNavigationStack</tags>
+                    <tags>active</tags>
                     <children xsi:type="advanced:Placeholder" xmi:id="_UOOB0GsQEe6FvdZsqWmiww" elementId="org.eclipse.ui.navigator.ProjectExplorer" ref="_UOOqpGsQEe6FvdZsqWmiww" closeable="true">
                       <tags>View</tags>
                       <tags>categoryTag:General</tags>
@@ -148,7 +149,6 @@
       <children xsi:type="basic:PartStack" xmi:id="_UOOqP2sQEe6FvdZsqWmiww" elementId="PartStack@7151dd9d" selectedElement="_gVcKoGuyEe6Xnsco1eqbKQ">
         <tags>org.eclipse.e4.primaryDataStack</tags>
         <tags>EditorStack</tags>
-        <tags>active</tags>
         <children xsi:type="basic:Part" xmi:id="_UOOqQGsQEe6FvdZsqWmiww" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="ReservasBusquedaDAO.java" iconURI="platform:/plugin/org.eclipse.jdt.ui/icons/full/obj16/jcu_obj.png" closeable="true">
           <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;ReservasBusquedaDAO.java&quot; partName=&quot;ReservasBusquedaDAO.java&quot; title=&quot;ReservasBusquedaDAO.java&quot; tooltip=&quot;alura-hotel-challenge/src/main/java/DAOS/ReservasBusquedaDAO.java&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/alura-hotel-challenge/src/main/java/DAOS/ReservasBusquedaDAO.java&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;8&quot; selectionOffset=&quot;1062&quot; selectionTopPixel=&quot;0&quot;/>&#xD;&#xA;&lt;/editor>"/>
           <tags>Editor</tags>
@@ -190,8 +190,6 @@
           <tags>Editor</tags>
           <tags>removeOnHide</tags>
           <tags>org.eclipse.jdt.ui.CompilationUnitEditor</tags>
-          <tags>active</tags>
-          <tags>activeOnClose</tags>
         </children>
       </children>
     </sharedElements>
@@ -201,6 +199,8 @@
       <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;view CommonNavigator.LINKING_ENABLED=&quot;0&quot; org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets=&quot;0&quot;>&#xD;&#xA;&lt;lastRecentlyUsedFilters/>&#xD;&#xA;&lt;/view>"/>
       <tags>View</tags>
       <tags>categoryTag:General</tags>
+      <tags>active</tags>
+      <tags>activeOnClose</tags>
       <menus xmi:id="_UOOqpWsQEe6FvdZsqWmiww" elementId="org.eclipse.ui.navigator.ProjectExplorer">
         <tags>ViewMenu</tags>
         <tags>menuContribution:menu</tags>
@@ -370,7 +370,7 @@
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_UOOq6GsQEe6FvdZsqWmiww" elementId="org.eclipse.ui.workbench.file">
         <tags>Draggable</tags>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_RCKN0GuyEe6Xnsco1eqbKQ" elementId="print" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/print_edit.png" tooltip="Print" command="_UORGamsQEe6FvdZsqWmiww"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_nPFNsHLeEe6v6djnLMNEOg" elementId="print" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/print_edit.png" tooltip="Print" command="_UORGamsQEe6FvdZsqWmiww"/>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_UOOq9msQEe6FvdZsqWmiww" elementId="group.edit" toBeRendered="false">
         <tags>toolbarSeparator</tags>
@@ -401,7 +401,7 @@
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_UOOrPGsQEe6FvdZsqWmiww" elementId="org.eclipse.ui.workbench.navigate">
         <tags>Draggable</tags>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_RCN4MGuyEe6Xnsco1eqbKQ" elementId="org.eclipse.ui.window.pinEditor" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/pin_editor.png" tooltip="Pin Editor" type="Check" command="_UORGHWsQEe6FvdZsqWmiww"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_nPHp8HLeEe6v6djnLMNEOg" elementId="org.eclipse.ui.window.pinEditor" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/pin_editor.png" tooltip="Pin Editor" type="Check" command="_UORGHWsQEe6FvdZsqWmiww"/>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_UOOrSGsQEe6FvdZsqWmiww" elementId="group.editor" toBeRendered="false">
         <tags>toolbarSeparator</tags>
