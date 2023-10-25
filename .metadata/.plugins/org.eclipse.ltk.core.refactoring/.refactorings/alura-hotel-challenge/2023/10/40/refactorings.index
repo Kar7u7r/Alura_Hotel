@@ -1,0 +1,11 @@
+1696133144330	Rename type 'Connection'
+1696133185655	Rename compilation unit 'newConnection.java'
+1696133462569	Delete element
+1696133653733	Rename compilation unit 'startConnection.java'
+1696133811622	Rename package 'controller'
+1696188176723	Rename method 'insertdata'
+1696193808417	Rename local variable 'fechaFormateada'
+1696193817359	Rename local variable 'fechaFormateadas'
+1696193869917	Rename local variable 'fechaSeleccionada'
+1696193959056	Rename local variable 'dateToCon'
+1696193983047	Rename local variable 'fechaSeleccionadaS'

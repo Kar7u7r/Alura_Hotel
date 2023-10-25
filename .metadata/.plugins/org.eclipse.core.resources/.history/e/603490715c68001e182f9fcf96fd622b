@@ -1,0 +1,27 @@
+package DAOS;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+public class ReservasBusquedaDAO {
+	private Connection con;
+
+	public ReservasBusquedaDAO(Connection con) {
+		this.con = con;
+	}
+
+	public boolean busquedaData() throws SQLException {
+
+
+		PreparedStatement statement = con.prepareStatement(
+				"select * from reservations Limit 15");
+
+		statement.execute();
+
+		ResultSet resultset = statement.getResultSet();
+
+		return resultset.next();
+	}
+}

@@ -1,0 +1,34 @@
+package DAOS;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import conexion.startConnectionserver;
+
+public class RegistroHuespedesDAO {
+	public void guardarHuespedes(String nombre, String apellido, String fecha,String nacionalidad,String telefono, String reservaN) {
+			try (Connection con = new startConnectionserver().getConnectionserver();
+					// statement para obtener id
+					PreparedStatement statement = con.prepareStatement(
+							"INSERT INTO guests (Gname, Gsurname, Date_of_birth, nationality, Phone_Number, Idreservation)"
+							+ "VALUES (? ,? ,? ,? ,? ,? )")) {
+
+				// conseguir Id de reserva guardada
+				statement.setString(1, nombre);
+				statement.setString(2, apellido);
+				statement.setString(3, fecha);
+				statement.setString(4, nacionalidad);
+				statement.setString(5, telefono);
+				statement.setString(6, reservaN);
+
+				statement.execute();
+	
+			} catch (SQLException e) {
+				e.printStackTrace(); // Manejar la excepción adecuadamente
+			}
+
+		
+	}
+}

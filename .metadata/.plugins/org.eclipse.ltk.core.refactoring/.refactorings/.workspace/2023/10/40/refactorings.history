@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">&#x0A;<refactoring comment="Rename resource &apos;AluraHotel-Esp-Base&apos; to &apos;alura_hotel&apos;" description="Rename resource &apos;AluraHotel-Esp-Base&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="/AluraHotel-Esp-Base" name="alura_hotel" stamp="1696125733372" updateReferences="true"/>&#x0A;<refactoring comment="Delete resource &apos;alura-hotel&apos;" deleteContents="false" description="Delete resource &apos;alura-hotel&apos;" element1="/alura-hotel" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1696126986315"/>
+</session>

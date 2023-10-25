@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<list key="installedFeatures">
+		<item value="org.eclipse.eclemma.feature:3.1.6.202206011447"/>
+		<item value="org.eclipse.egit:6.5.0.202303070854-r"/>
+		<item value="org.eclipse.emf.common:2.30.0.v20230810-0713"/>
+		<item value="org.eclipse.emf.ecore:2.35.0.v20230829-0934"/>
+		<item value="org.eclipse.epp.mpc:1.10.1.v20221110-1841"/>
+		<item value="org.eclipse.help:2.3.1300.v20230302-0300"/>
+		<item value="org.eclipse.jgit.gpg.bc:6.5.0.202303070854-r"/>
+		<item value="org.eclipse.jgit.http.apache:6.5.0.202303070854-r"/>
+		<item value="org.eclipse.jgit.ssh.apache:6.5.0.202303070854-r"/>
+		<item value="org.eclipse.jgit:6.5.0.202303070854-r"/>
+		<item value="org.eclipse.m2e.feature:2.2.1.20230307-1553"/>
+		<item value="org.eclipse.m2e.logback.feature:2.1.1.20230106-1511"/>
+		<item value="org.eclipse.mylyn.wikitext.editors_feature:3.0.46.202301111837"/>
+		<item value="org.eclipse.mylyn.wikitext_feature:3.0.46.202301111837"/>
+		<item value="org.eclipse.oomph.p2:1.26.0.v20230523-0636"/>
+		<item value="org.eclipse.oomph.setup.core:1.27.0.v20230416-1150"/>
+		<item value="org.eclipse.oomph.setup:1.28.0.v20230523-0636"/>
+		<item value="org.eclipse.rcp:4.27.0.v20230302-0300"/>
+		<item value="org.eclipse.tm.terminal.connector.ssh.feature:11.1.0.202212091724"/>
+		<item value="org.eclipse.tm.terminal.control.feature:11.1.0.202212091724"/>
+		<item value="org.eclipse.tm.terminal.feature:11.1.0.202212091724"/>
+		<item value="org.eclipse.tm.terminal.view.feature:11.1.0.202212091724"/>
+		<item value="org.eclipse.userstorage:1.2.0.v20210517-0327"/>
+		<item value="org.eclipse.wb.core.feature:1.13.0.202309050414"/>
+		<item value="org.eclipse.wb.core.ui.feature:1.13.0.202308190851"/>
+		<item value="org.eclipse.wb.doc.user.feature:1.13.0.202306212003"/>
+		<item value="org.eclipse.wb.layout.group.feature:1.13.0.202308291944"/>
+		<item value="org.eclipse.wb.rcp.SWT_AWT_support:1.13.0.202307020917"/>
+		<item value="org.eclipse.wb.rcp.doc.user.feature:1.13.0.202306212003"/>
+		<item value="org.eclipse.wb.rcp.feature:1.13.0.202309051520"/>
+		<item value="org.eclipse.wb.swing.doc.user.feature:1.13.0.202306212003"/>
+		<item value="org.eclipse.wb.swing.feature:1.13.0.202309050414"/>
+		<item value="org.eclipse.wb.swt.feature:1.13.0.202308291944"/>
+		<item value="org.eclipse.wst.json_ui.feature:1.1.10.v202211200019"/>
+		<item value="org.eclipse.wst.web_ui.feature:3.29.0.v202301190221"/>
+		<item value="org.eclipse.wst.xml_ui.feature:3.29.0.v202212250111"/>
+	</list>
+	<section name="ExternalProjectImportWizard">
+		<item key="WizardProjectsImportPage.STORE_NESTED_PROJECTS" value="false"/>
+		<item key="WizardProjectsImportPage.STORE_COPY_PROJECT_ID" value="false"/>
+		<item key="WizardProjectsImportPage.STORE_ARCHIVE_SELECTED" value="false"/>
+		<item key="WizardProjectsImportPage.STORE_CLOSE_CREATED_PROJECTS_ID" value="false"/>
+		<item key="WizardProjectsImportPage.STORE_HIDE_CONFLICTING_PROJECTS_ID" value="false"/>
+		<list key="WizardProjectsImportPage.STORE_DIRECTORIES">
+			<item value="C:\Users\anian\OneDrive\Escritorio\challenge-one-alura-hotel-latam-repositorio-base"/>
+		</list>
+		<list key="WizardProjectsImportPage.STORE_ARCHIVES">
+			<item value=""/>
+		</list>
+	</section>
+	<section name="NewWizardAction">
+		<item key="NewWizardSelectionPage.STORE_SELECTED_ID" value="org.eclipse.m2e.core.wizards.Maven2ProjectWizard"/>
+		<list key="NewWizardSelectionPage.STORE_EXPANDED_CATEGORIES_ID">
+			<item value="org.eclipse.m2e"/>
+		</list>
+	</section>
+</section>
