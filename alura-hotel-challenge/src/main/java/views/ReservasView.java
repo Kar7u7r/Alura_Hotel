@@ -14,6 +14,7 @@ import com.toedter.calendar.JDateChooser;
 
 import DAOS.reservasDAO;
 import conexion.ConexionFactory;
+import model.Booking;
 
 import java.awt.Font;
 import javax.swing.JComboBox;
@@ -312,6 +313,7 @@ public class ReservasView extends JFrame {
 		txtFormaPago.setModel(new DefaultComboBoxModel(
 				new String[] { "Tarjeta de Crédito", "Tarjeta de Débito", "Dinero en efectivo" }));
 		panel.add(txtFormaPago);
+		
 
 		JPanel btnsiguiente = new JPanel();
 		btnsiguiente.addMouseListener(new MouseAdapter() {

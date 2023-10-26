@@ -6,6 +6,13 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
+
+import DAOS.ReservasBusquedaDAO;
+import conexion.ConexionFactory;
+import model.Booking;
+import model.Guest;
+import model.GuestBookingPair;
+
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.JButton;
@@ -13,9 +20,12 @@ import javax.swing.ImageIcon;
 import java.awt.Color;
 import java.awt.SystemColor;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.util.List;
+import java.util.Optional;
 import java.awt.event.ActionEvent;
 import javax.swing.JTabbedPane;
 import java.awt.Toolkit;
@@ -25,6 +35,9 @@ import javax.swing.ListSelectionModel;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.SQLException;
 
 @SuppressWarnings("serial")
 public class Busqueda extends JFrame {
@@ -212,11 +225,12 @@ public class Busqueda extends JFrame {
 		separator_1_2.setBounds(539, 159, 193, 2);
 		contentPane.add(separator_1_2);
 		
+		
 		JPanel btnbuscar = new JPanel();
 		btnbuscar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-
+				buscar();
 			}
 		});
 		btnbuscar.setLayout(null);
@@ -224,6 +238,8 @@ public class Busqueda extends JFrame {
 		btnbuscar.setBounds(748, 125, 122, 35);
 		btnbuscar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 		contentPane.add(btnbuscar);
+		
+
 		
 		JLabel lblBuscar = new JLabel("BUSCAR");
 		lblBuscar.setBounds(0, 0, 122, 35);
@@ -233,6 +249,25 @@ public class Busqueda extends JFrame {
 		lblBuscar.setFont(new Font("Roboto", Font.PLAIN, 18));
 		
 		JPanel btnEditar = new JPanel();
+		btnEditar.addMouseListener(new MouseAdapter() {
+		    @Override
+		    public void mouseClicked(MouseEvent e) {
+		        if (tieneFilaElegidaHuesped() || tieneFilaElegidaReserva()) {
+		            JOptionPane.showMessageDialog(null, "Por favor, elige un ítem");
+		            return;
+		        }
+
+		        if (!tieneFilaElegidaHuesped()) {
+		            modificarHuesped();
+		        }
+
+		        if (!tieneFilaElegidaReserva()) {
+		            modificarReserva();
+		        }
+		    }
+		});
+
+
 		btnEditar.setLayout(null);
 		btnEditar.setBackground(new Color(12, 138, 199));
 		btnEditar.setBounds(635, 508, 122, 35);
@@ -247,6 +282,23 @@ public class Busqueda extends JFrame {
 		btnEditar.add(lblEditar);
 		
 		JPanel btnEliminar = new JPanel();
+		btnEliminar.addMouseListener(new MouseAdapter() {
+		    @Override
+		    public void mouseClicked(MouseEvent e) {
+		        if (tieneFilaElegidaHuesped() || tieneFilaElegidaReserva()) {
+		            JOptionPane.showMessageDialog(null, "Por favor, elige un ítem");
+		            return;
+		        }
+
+		        if (!tieneFilaElegidaHuesped()) {
+		            eliminarHuesped();
+		        }
+
+		        if (!tieneFilaElegidaReserva()) {
+		            eliminarReserva();
+		        }
+		    }
+		});
 		btnEliminar.setLayout(null);
 		btnEliminar.setBackground(new Color(12, 138, 199));
 		btnEliminar.setBounds(767, 508, 122, 35);
@@ -262,15 +314,134 @@ public class Busqueda extends JFrame {
 		setResizable(false);
 	}
 	
-//Código que permite mover la ventana por la pantalla según la posición de "x" y "y"
+	private void buscar() {
+	    Connection con = new ConexionFactory().recuperaConexion();
+	    String input = txtBuscar.getText();
+	    Long id = null;
+	    String apellido = null;
+
+	    try {
+	        id = Long.parseLong(input);
+	    } catch (NumberFormatException e) {
+	        apellido = input;
+	    }
+
+	    List<Object> listabusqueda;
+	    if (id != null) {
+	        listabusqueda = new ReservasBusquedaDAO(con).listarporId(id);
+	    } else {
+	        listabusqueda = new ReservasBusquedaDAO(con).listarporApellido(apellido);
+	    }
+
+	    modelo.setRowCount(0);
+	    modeloHuesped.setRowCount(0);
+
+	    for (Object obj : listabusqueda) {
+	        if (obj instanceof Guest) {
+	            Guest guest = (Guest) obj;
+	            Object[] rowGuestData = { 
+	                guest.getId(),
+	                guest.getFirstName(),
+	                guest.getLastName(),
+	                guest.getBirthDate(),
+	                guest.getPhoneNumber(),
+	                guest.getNationality(),
+	                guest.getBookingId()
+	            };
+	            modeloHuesped.addRow(rowGuestData);
+	        } else if (obj instanceof Booking) {
+	            Booking booking = (Booking) obj;
+	            Object[] rowBookingData = { 
+	                booking.getId(),
+	                booking.getEntryDate(),
+	                booking.getDepartureDate(),
+	                booking.getPrice(),
+	                booking.getPaymentMethod()
+	            };
+	            modelo.addRow(rowBookingData);
+	        }
+	    }
+	    System.out.println("Número de resultados: " + listabusqueda.size());
+	}
+
+    protected void modificarReserva() {
+        try (Connection con = new ConexionFactory().recuperaConexion()) {
+            Integer id = Integer.valueOf(modelo.getValueAt(tbReservas.getSelectedRow(), 0).toString());
+            String fechaString = modelo.getValueAt(tbReservas.getSelectedRow(), 1).toString();
+            Date checkIn = Date.valueOf(fechaString);
+            String fechaStringOut = modelo.getValueAt(tbReservas.getSelectedRow(), 2).toString();
+            Date checkOut = Date.valueOf(fechaStringOut);
+            Double valor = (Double) modelo.getValueAt(tbReservas.getSelectedRow(), 3);
+            String formaPago = (String) modelo.getValueAt(tbReservas.getSelectedRow(), 4);
+
+            ReservasBusquedaDAO bd = new ReservasBusquedaDAO(con);
+            bd.modificarReservas(id, checkIn, checkOut, valor, formaPago);
+        } catch (SQLException ex) {
+        	JOptionPane.showMessageDialog(null, "Hubo un error con la base de datos");
+        	throw new RuntimeException(ex); 
+        }
+        buscar();
+        JOptionPane.showMessageDialog(null, "Reserva modificada");
+    }
+    
+    protected void modificarHuesped() {
+        try (Connection con = new ConexionFactory().recuperaConexion()) {
+            Integer id = Integer.valueOf(modeloHuesped.getValueAt(tbHuespedes.getSelectedRow(), 0).toString());
+            String nombre = (String) modeloHuesped.getValueAt(tbHuespedes.getSelectedRow(), 1);
+            String apellido = (String) modeloHuesped.getValueAt(tbHuespedes.getSelectedRow(), 2);
+            String fechaString = modeloHuesped.getValueAt(tbHuespedes.getSelectedRow(), 3).toString();
+            Date fechaNacimiento = Date.valueOf(fechaString);
+            String nacionalidad = (String) modeloHuesped.getValueAt(tbHuespedes.getSelectedRow(), 4);
+            String telefono = (String) modeloHuesped.getValueAt(tbHuespedes.getSelectedRow(), 5);
+
+            ReservasBusquedaDAO bd = new ReservasBusquedaDAO(con);
+            bd.modificarHuespedes(id, nombre, apellido, fechaNacimiento, nacionalidad, telefono);
+        } catch (SQLException ex) {
+        	JOptionPane.showMessageDialog(null, "Hubo un error con la base de datos");
+            throw new RuntimeException(ex); 
+        }
+        buscar();
+        JOptionPane.showMessageDialog(null, "Huesped modificado");
+    }
+	
+	protected void eliminarReserva() {
+		Connection con = new ConexionFactory().recuperaConexion();
+		Integer id = Integer.valueOf(modelo.getValueAt(tbReservas.getSelectedRow(), 0).toString());
+		
+		ReservasBusquedaDAO bd =  new ReservasBusquedaDAO(con);
+		bd.eliminarReserva(id);
+		buscar();
+		JOptionPane.showMessageDialog(null, "Se elimino reserva");
+	}
+
+    protected void eliminarHuesped() {
+    	Connection con = new ConexionFactory().recuperaConexion();
+		Integer id = Integer.valueOf(modeloHuesped.getValueAt(tbHuespedes.getSelectedRow(), 0).toString());
+		
+		ReservasBusquedaDAO bd =  new ReservasBusquedaDAO(con);
+		bd.eliminarHuesped(id);
+		buscar();
+		JOptionPane.showMessageDialog(null, "Se elimino huesped");
+	}
+    
+	 private boolean tieneFilaElegidaHuesped(){
+			return tbHuespedes.getSelectedRow() == -1 ;
+		}
+	 private boolean tieneFilaElegidaReserva(){
+			return tbReservas.getSelectedRow() == -1;
+		}
+
+	//Código que permite mover la ventana por la pantalla según la posición de "x" y "y"
 	 private void headerMousePressed(java.awt.event.MouseEvent evt) {
 	        xMouse = evt.getX();
 	        yMouse = evt.getY();
-	    }
+	 }
 
 	    private void headerMouseDragged(java.awt.event.MouseEvent evt) {
 	        int x = evt.getXOnScreen();
 	        int y = evt.getYOnScreen();
 	        this.setLocation(x - xMouse, y - yMouse);
-}
+	    }
+	    
+
 }
